@@ -1,16 +1,20 @@
 Meteor.startup(function() {
   
 });
-/*
+
 // Define the function(s) we wish to call
 
-var submitTweet = function(textToStore) {
-  
-  
-  TweetsCollection.insert({
-    createdAt: new Date().getTime(),
-    tweetText: textToStore
-  });
+submitTweet = function(textToStore) {
+   var authorEmail = Meteor.user().emails[0].address;
+    
+    TweetsCollection.insert({
+      tweetText: textToStore,
+      createdAt: new Date().getTime(),
+      author: Meteor.user().emails[0].address,
+      user: Meteor.userId(),
+      authorImageURL: Gravatar.imageUrl(authorEmail)
+    });
+ 
 }
 
 // Add function(s) to a dictionary
@@ -18,6 +22,21 @@ var serverMethods = {submitTweetOnServer: submitTweet};
 
 // Tell Meteor which function(s) we plan on calling on the client
 Meteor.methods(serverMethods);
+/*
+Meteor.methods({
+  submitTweetOnServer: function(textToStore) {
+    
+    var authorEmail = Meteor.user().emails[0].address;
+    
+    TweetsCollection.insert({
+      tweetText: textToStore,
+      createdAt: new Date().getTime(),
+      author: Meteor.user().emails[0].address,
+      user: Meteor.userId(),
+      authorImageURL: Gravatar.imageUrl(authorEmail)
+    });
+  }
+});
 */
 // Find and return the latest tweets
 var tweetPublishingFunction = function() {
