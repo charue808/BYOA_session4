@@ -22,22 +22,7 @@ var serverMethods = {submitTweetOnServer: submitTweet};
 
 // Tell Meteor which function(s) we plan on calling on the client
 Meteor.methods(serverMethods);
-/*
-Meteor.methods({
-  submitTweetOnServer: function(textToStore) {
-    
-    var authorEmail = Meteor.user().emails[0].address;
-    
-    TweetsCollection.insert({
-      tweetText: textToStore,
-      createdAt: new Date().getTime(),
-      author: Meteor.user().emails[0].address,
-      user: Meteor.userId(),
-      authorImageURL: Gravatar.imageUrl(authorEmail)
-    });
-  }
-});
-*/
+
 // Find and return the latest tweets
 var tweetPublishingFunction = function() {
   return TweetsCollection.find();

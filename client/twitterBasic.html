@@ -44,19 +44,19 @@
 
 
 <template name="recentUpdates">
-<h4>Recent Updates</h4>
-  <div class="tweet-list">
-    <br>
-    {{#if Template.subscriptionsReady}}
-      {{#each mostRecentTweets}}
-          {{> tweetItem}}
-      {{/each}}
-    {{else}}
-      Loading....
-    {{/if}}
-    <br>
-    <br>
-  </div>
+  <h4>Recent Updates</h4>
+    <div class="tweet-list">
+      <br>
+      {{#if Template.subscriptionsReady}}
+        {{#each mostRecentTweets}}
+            {{> tweetItem}}
+        {{/each}}
+      {{else}}
+        Loading....
+      {{/if}}
+      <br>
+      <br>
+    </div>
 </template>
 
 
@@ -65,7 +65,12 @@
   <div class="tweet">
     <div class="tweetContent">
       <div class="tweetBody" style="display: inline-block; max-width: 520px;">
-        <h5><span class="tweetImage"><img src={{authorImageURL}}></span><span class="blueUnderline"><strong>{{author}}</strong></span> {{tweetText}} <span class="tweetTime blueUnderline" data-livestamp="{{submittedTweet}}"></span></h5>
+        <h5>
+          <span class="tweetImage"><img src={{authorImageURL}}></span>
+          <span class="blueUnderline"><strong>{{author}}</strong></span> 
+          {{tweetText}} 
+          <span class="tweetTime blueUnderline" data-livestamp="{{submittedTweet}}"></span>
+        </h5>
       </div>
     </div>
   </div>
